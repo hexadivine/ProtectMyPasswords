@@ -33,7 +33,7 @@ const getData = async (req, res) => {
     }
 };
 
-// send s e p
+// send services, emails & password
 const postData = async (req, res) => {
     try {
         const { service, email, password } = req.body;
@@ -44,13 +44,22 @@ const postData = async (req, res) => {
         });
         return res.status(200).json({ status: "ok", msg: result });
     } catch (error) {
-        // c
         return res.sendStatus(400).json({ status: "error", msg: error.message });
     }
+};
+
+// update data
+const updateData = async (req, res) => {
+    const { id } = req.params;
+    const updateTo = req.body;
+    const result = await dbHandler.findOneAndUpdate({ _id: id }, updateTo);
+    if (!result) return res.sendStatus(400).json({ status: "error", msg: error.message });
+    return res.status(200).json({ status: "ok", msg: result });
 };
 
 module.exports = {
     postData,
     getDatas,
     getData,
+    updateData,
 };
