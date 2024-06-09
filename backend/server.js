@@ -11,9 +11,13 @@ const app = express();
 app.use(express.json());
 app.use("/api", apiRoutes);
 
-mongoose;
-
-// listen
-app.listen(process.env.PORT, () => {
-    console.log("hi");
-});
+mongoose
+    .connect(process.env.MONGODB_URI)
+    .then(() => {
+        app.listen(process.env.PORT, () => {
+            console.log("hi");
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
