@@ -21,9 +21,6 @@ const getData = async (req, res) => {
     try {
         const { id } = req.params;
         const result = await dbHandler.findById(id);
-        console.log(id);
-        console.log(result);
-        console.log(result == true);
         if (result) {
             return res.status(200).json({ status: "ok", msg: results });
         }
