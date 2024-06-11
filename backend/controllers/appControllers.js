@@ -54,9 +54,20 @@ const updateData = async (req, res) => {
     return res.status(200).json({ status: "ok", msg: result });
 };
 
+// delete data
+const deleteData = async (req, res) => {
+    const { id } = req.params;
+    const result = await dbHandler.findOneAndDelete({ id: id });
+    if (!result) {
+        return res.sendStatus(400).json({ status: "error", msg: error.message });
+    }
+    return res.status(200).json({ status: "ok", msg: result });
+};
+
 module.exports = {
-    postData,
     getDatas,
     getData,
+    postData,
     updateData,
+    deleteData,
 };
