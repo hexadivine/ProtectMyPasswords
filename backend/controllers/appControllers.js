@@ -7,7 +7,7 @@ const getDatas = async (req, res) => {
     try {
         const results = await dbHandler.find({}).sort({ createdAt: -1 });
         if (results) {
-            return res.status(200).json({ status: "ok1", msg: results });
+            return res.status(200).json({ status: "ok", msg: results });
         }
         return res.status(404).json({ status: "error", msg: "Data not found!" });
     } catch (error) {
