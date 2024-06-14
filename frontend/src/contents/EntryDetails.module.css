@@ -1,0 +1,8 @@
+.entryDetails {
+    background: #fff;
+    min-height: 150px;
+    display: flex;
+
+    padding: 10px 20px;
+    margin: 10px 0;
+}
