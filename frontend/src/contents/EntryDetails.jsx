@@ -3,9 +3,14 @@ import styles from "./EntryDetails.module.css";
 const EntryDetails = ({ data }) => {
     return (
         <div className={styles.entryDetails}>
-            <h4>{data.service}</h4>
-            <p> Email : {data.email}</p>
-            <p>Password : {data.password}</p>
+            <b className={styles.heading}>{data.service}</b>
+            <p>
+                <b>Email</b> : {data.email}
+            </p>
+            <p>
+                <b>Password</b> : {data.password}
+            </p>
+            <p className={styles.timestamp}>{data.createdAt}</p>
         </div>
     );
 };
