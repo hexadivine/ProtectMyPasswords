@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import styles from "./Home.module.css";
+import styles from "./Home.module.css";
 import EntryDetails from "../contents/EntryDetails";
 
 const Home = () => {
@@ -17,15 +17,12 @@ const Home = () => {
     }, []);
     // console.log(data);
     return (
-        <>
-            <div>
-                {/* {data && data.map((element) => <p key={element._id}>{element._id} </p>)} */}
-                {data.map((element) => (
-                    <EntryDetails key={element._id} data={element} />
-                ))}
-                {/* </div> */}
+        <div className={styles.home}>
+            <div className="workouts">
+                {data && data.map((element) => <EntryDetails key={element._id} data={element} />)}
             </div>
-        </>
+            <div className="form"></div>
+        </div>
     );
 };
 
