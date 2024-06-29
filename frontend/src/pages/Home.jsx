@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import EntryDetails from "../contents/EntryDetails";
+import AddDataForm from "../contents/AddDataForm";
 
 const Home = () => {
     // fetch data when page reloads
@@ -17,12 +18,22 @@ const Home = () => {
     }, []);
     // console.log(data);
     return (
-        <div className={styles.home}>
-            <div className="workouts">
-                {data && data.map((element) => <EntryDetails key={element._id} data={element} />)}
+        <>
+            <div className={styles.home}>
+                <div className="workouts">
+                    {data &&
+                        data.map((element) => (
+                            <EntryDetails
+                                key={element._id}
+                                data={element}
+                                unitedData={data}
+                                setData={setData}
+                            />
+                        ))}
+                </div>
+                <AddDataForm data={data} setData={setData} />
             </div>
-            <div className="form"></div>
-        </div>
+        </>
     );
 };
 

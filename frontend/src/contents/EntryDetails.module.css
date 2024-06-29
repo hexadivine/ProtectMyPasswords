@@ -5,6 +5,14 @@
     padding: 20px 20px;
     margin: 10px 0;
 }
+.entryDetails span {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.flexBox {
+    display: flex;
+}
 
 .heading {
     color: rgb(0, 173, 124);
