@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const apiRoutes = require("./routes/apiRoutes");
+const usersRoutes = require("./routes/usersRoutes");
 
 // init
 const app = express();
@@ -11,15 +12,7 @@ const app = express();
 // using middleware
 app.use(express.json());
 app.use("/api", apiRoutes);
-// const corsOptions = {
-//     origin: process.env.CLIENT_URL, // Set this to your frontend URL
-//     credentials: true,
-//     allowedHeaders: ["sessionId", "Content-Type"],
-//     exposedHeaders: ["sessionId"],
-//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//     preflightContinue: false,
-// };
-// app.use(cors(corsOptions));
+app.use("/user", usersRoutes);
 
 mongoose
     .connect(process.env.MONGODB_URI)
