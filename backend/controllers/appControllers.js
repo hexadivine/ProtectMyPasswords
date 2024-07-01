@@ -40,16 +40,12 @@ const getData = async (req, res) => {
 // send services, emails & password
 const postData = async (req, res) => {
     try {
-        console.log("triggered");
         const { service, email, password } = req.body;
-        console.log("got data");
         const result = await dbHandler.create({
             service: service,
             email: email,
             password: password,
         });
-        console.log("data added");
-        console.log("sending response");
         return res.status(200).json({ status: "ok", msg: result });
     } catch (error) {
         return res.sendStatus(400).json({ status: "error", msg: error.message });
